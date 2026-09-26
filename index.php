@@ -1,0 +1,4 @@
+<?php require_once "db.php"; $r=$conn->query("SELECT * FROM restaurants ORDER BY id DESC"); ?>
+<!doctype html><html><head><title>FoodExpress</title><link rel="stylesheet" href="assets/style.css"></head><body>
+<header><div class="container"><h1>FoodExpress</h1><nav><a href="index.php">Home</a><a href="register.php">Register</a><a href="login.php">Login</a><a href="admin/login.php">Admin</a></nav></div></header>
+<main class="container"><section class="hero"><h2>Delicious food, delivered fast.</h2><p>Browse restaurants and order your favourite meals.</p></section><h2>Restaurants</h2><div class="grid"><?php while($x=$r->fetch_assoc()): ?><div class="card"><h3><?=htmlspecialchars($x['name'])?></h3><p><?=htmlspecialchars($x['cuisine'])?> · <?=htmlspecialchars($x['location'])?></p><a class="btn" href="menu.php?restaurant_id=<?=$x['id']?>">View Menu</a></div><?php endwhile;?></div></main><footer>FoodExpress · PHP + MySQL · AWS Ready</footer></body></html>
